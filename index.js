@@ -19,6 +19,8 @@ const tasks = [
 import express from 'express'
 import userRoute from './routers/user.js';
 import courseRoute from './routers/course.js';
+import 'dotenv/config'
+import mongoose from 'mongoose';
 
 
 
@@ -29,7 +31,11 @@ app.use(express.json());
 app.use("/user" , userRoute)
 app.use("/courses" , courseRoute)
 
+// console.log(process.env.MONGODBURI);
 
+mongoose.connect(process.env.MONGODBURI)
+.then(()=> console.log("MOngoDb connected"))
+.catch((err)=> console.log("err ==> " , err))
 
 app.get('/' , (req , res)=>{
 
