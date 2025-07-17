@@ -17,7 +17,8 @@ const tasks = [
 
 
 import express from 'express'
-import router from './routers/user.js';
+import userRoute from './routers/user.js';
+import courseRoute from './routers/course.js';
 
 
 
@@ -25,7 +26,8 @@ const app = express()
 const PORT = 4000;
 
 app.use(express.json());
-app.use("/user" , router)
+app.use("/user" , userRoute)
+app.use("/courses" , courseRoute)
 
 
 
